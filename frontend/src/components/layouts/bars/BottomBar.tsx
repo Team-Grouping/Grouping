@@ -16,7 +16,7 @@ const ICONS = {
 
 export default function BottomBar() {
   const pathname = usePathname();
-  const userId = pathname.split("/")[1];
+  const userId = pathname.split("/")[2];
 
   const pathMyPageUserId = replaceUserId(PATHS.myPage, userId);
   const pathCartUserId = replaceUserId(PATHS.shoppingCart, userId);
