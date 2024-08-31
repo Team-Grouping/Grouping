@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import DefaultLayout from "@/components/layouts/DefaultLayouts";
 
 const inter = Inter({ subsets: ["latin"] });
 const pretendard = localFont({
-  src: "/fonts/PretendardVariable.woff2",
+  src: "../../public/fonts/PretendardVariable.woff2",
   display: "swap",
   weight: "45 920",
 });
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.className} ${inter.className}`}>
-        {children}
+        <DefaultLayout>{children}</DefaultLayout>
       </body>
     </html>
   );
