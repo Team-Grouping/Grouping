@@ -13,5 +13,19 @@ type Product = {
 };
 
 type RequestPostProductDto = Omit<Product, "id" | "progress">;
+type Cart = {
+  id: number;
+  product: Product;
+  checked: boolean;
+  quantity: number;
+};
 
-export { RequestPostProductDto, RequestPostCartDto, Product };
+type RequestPostCartDto = Pick<Cart, "product">;
+
+export {
+  RequestPostProductDto,
+  RequestPostCartDto,
+  Product,
+  Cart,
+  RequestPostCartDto,
+};
