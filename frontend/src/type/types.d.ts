@@ -3,7 +3,7 @@ type Product = {
   imageSrc: string;
   title: string;
   price: string;
-  discount: string;
+  discount: number;
   seller: string;
   deadline: string;
   category: string;
@@ -12,12 +12,6 @@ type Product = {
   goal: number;
 };
 
-type PostProductDto = Omit<Product, "id" | "progress">;
+type RequestPostProductDto = Omit<Product, "id" | "progress">;
 
-type Cart = {
-  product: Product;
-  checked: boolean;
-  quantity: number;
-};
-
-export { PostProductDto, Product, Cart };
+export { RequestPostProductDto, RequestPostCartDto, Product };
