@@ -1,5 +1,4 @@
-import s from "./page.module.scss";
-
+import PaymentContainer from "@/containers/payments/PaymentContainer";
 export default function Payments() {
-  return <></>;
+  return <PaymentContainer />;
 }
