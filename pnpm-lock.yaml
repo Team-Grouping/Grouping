@@ -7,10 +7,17 @@ settings:
 importers:
 
   .:
-    devDependencies:
+    dependencies:
       '@fhenixprotocol/contracts':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: ^0.1.0-beta.3
+        version: 0.1.2
+      fhenixjs:
+        specifier: ^0.0.4
+        version: 0.0.4
+      ganache-cli:
+        specifier: ^6.12.2
+        version: 6.12.2
+    devDependencies:
       '@nomicfoundation/hardhat-chai-matchers':
         specifier: ^2.0.6
         version: 2.0.6(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.1)(hardhat@2.20.1(ts-node@10.9.2(@types/node@20.11.19)(typescript@5.3.3))(typescript@5.3.3)))(chai@4.4.1)(ethers@6.11.1)(hardhat@2.20.1(ts-node@10.9.2(@types/node@20.11.19)(typescript@5.3.3))(typescript@5.3.3))
@@ -208,8 +215,8 @@ packages:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
 
-  '@fhenixprotocol/contracts@0.2.1':
-    resolution: {integrity: sha512-3SQRdpjeQSxZFkhsl8xfARG3bNUEbD23mUmRB2qnGNJHLs9hNQwy8bvqQoJ/3zlhcqMLoDENBKtcP63LzCBe6g==}
+  '@fhenixprotocol/contracts@0.1.2':
+    resolution: {integrity: sha512-eSN3nYHeVuJ60rwOcCcKof62hnrQtYAcEwHnrlB+Atyjfngmu8CuFZSjd0ERpRe8B9yHZoguhC5lSzGgAXtylQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1100,6 +1107,9 @@ packages:
     peerDependencies:
       hardhat: ^2.0.0
 
+  fhenixjs@0.0.4:
+    resolution: {integrity: sha512-AqpTFJyS/IvZm6PVk1UFAfbkq93Oy0GyLY8GkSrPIGwunNuKmUvuT2R+hVMNbCEuTRCzxqUfuB+nxhmNt8Iwmw==}
+
   fhenixjs@0.2.1:
     resolution: {integrity: sha512-OJmZrLCouotywnn6HbNeSvPYGZ3awQ4QgRcb8lAoJjpUixscsQl3e3SqlEzZCvgoyoXNeg2f+8n4CZvQBqqJ5Q==}
 
@@ -1182,6 +1192,15 @@ packages:
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
+
+  ganache-cli@6.12.2:
+    resolution: {integrity: sha512-bnmwnJDBDsOWBUP8E/BExWf85TsdDEFelQSzihSJm9VChVO1SHp94YXLP5BlA4j/OTxp0wR4R1Tje9OHOuAJVw==}
+    deprecated: ganache-cli is now ganache; visit https://trfl.io/g7 for details
+    hasBin: true
+    bundledDependencies:
+      - source-map-support
+      - yargs
+      - ethereumjs-util
 
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
@@ -1594,6 +1613,9 @@ packages:
   node-gyp-build@4.8.0:
     resolution: {integrity: sha512-u6fs2AEUljNho3EYTJNBfImO5QTo/J/1Etd+NVdCj7qWKUSN/bSLkZwhDv7I+w/MSC6qJ4cknepkAYykDdK8og==}
     hasBin: true
+
+  node-tfhe@0.3.2:
+    resolution: {integrity: sha512-jnLtP+RcQIYH1I1zn8S8W/Sn97yJEY5GqA1X7RDmtLezV7NpgO47fFgtd+T7xGNhwpz6yGyww1In7BWOU1jiwg==}
 
   node-tfhe@0.6.1:
     resolution: {integrity: sha512-p2BidmylEO+3v1Q4KqErNJC8z/Y2R+b+Yd42omweeII41AbgPM12RJCmvE9GMvr/ZbAn/H762JPijLH08oBUYQ==}
@@ -2014,6 +2036,9 @@ packages:
   table@6.8.1:
     resolution: {integrity: sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA==}
     engines: {node: '>=10.0.0'}
+
+  tfhe@0.3.2:
+    resolution: {integrity: sha512-2FTGQKYiusf/PCrRpYFyEzTSFGHRSEMrC49O7HNsUZ8XslL94RJ0mQliE1BRLk9jhPrlZD26M2UF/EO1Gb0mRw==}
 
   tfhe@0.6.1:
     resolution: {integrity: sha512-csHYfEbejbQl4LVb1/37LY9AxiR9RqvzXsHT1wENMtGqIjNmev3T1aXyljooGc/4HuZmG8VjlUkX6CYvG4U80g==}
@@ -2538,7 +2563,7 @@ snapshots:
 
   '@fastify/busboy@2.1.0': {}
 
-  '@fhenixprotocol/contracts@0.2.1':
+  '@fhenixprotocol/contracts@0.1.2':
     dependencies:
       '@openzeppelin/contracts': 5.0.1
 
@@ -3615,6 +3640,17 @@ snapshots:
       - debug
       - utf-8-validate
 
+  fhenixjs@0.0.4:
+    dependencies:
+      ethers: 6.11.1
+      node-tfhe: 0.3.2
+      tfhe: 0.3.2
+      tweetnacl: 1.0.3
+      tweetnacl-util: 0.15.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   fhenixjs@0.2.1:
     dependencies:
       ethers: 6.11.1
@@ -3713,6 +3749,8 @@ snapshots:
     optional: true
 
   function-bind@1.1.2: {}
+
+  ganache-cli@6.12.2: {}
 
   get-caller-file@2.0.5: {}
 
@@ -4241,6 +4279,8 @@ snapshots:
 
   node-gyp-build@4.8.0: {}
 
+  node-tfhe@0.3.2: {}
+
   node-tfhe@0.6.1: {}
 
   nofilter@3.1.0: {}
@@ -4687,6 +4727,8 @@ snapshots:
       slice-ansi: 4.0.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
+
+  tfhe@0.3.2: {}
 
   tfhe@0.6.1: {}
 
