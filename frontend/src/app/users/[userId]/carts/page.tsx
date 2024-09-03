@@ -1,5 +1,6 @@
-import s from "./page.module.scss";
+"use client";
+import CartList from "@/containers/carts/CartList";
 
 export default function Carts() {
-  return <></>;
+  return <CartList />;
 }
