@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 1",
     price: "19.99",
     discount: "10",
@@ -15,7 +15,7 @@ export const products = [
   },
   {
     id: 2,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 2",
     price: "29.99",
     discount: "7",
@@ -29,7 +29,7 @@ export const products = [
   },
   {
     id: 3,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 3",
     price: "39.99",
     discount: "15",
@@ -43,7 +43,7 @@ export const products = [
   },
   {
     id: 4,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 4",
     price: "49.99",
     discount: "8",
@@ -57,7 +57,7 @@ export const products = [
   },
   {
     id: 5,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 5",
     price: "59.99",
     discount: "16",
@@ -71,7 +71,7 @@ export const products = [
   },
   {
     id: 6,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 6",
     price: "19.99",
     discount: "10",
@@ -85,7 +85,7 @@ export const products = [
   },
   {
     id: 7,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 7",
     price: "29.99",
     discount: "7",
@@ -99,7 +99,7 @@ export const products = [
   },
   {
     id: 8,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 8",
     price: "39.99",
     discount: "15",
@@ -113,7 +113,7 @@ export const products = [
   },
   {
     id: 9,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 9",
     price: "49.99",
     discount: "8",
@@ -127,7 +127,7 @@ export const products = [
   },
   {
     id: 10,
-    imageSrc: `/assets/logo192.png`,
+    imageSrc: `/images/GroupingLogo.png`,
     title: "Product 10",
     price: "59.99",
     discount: "16",
