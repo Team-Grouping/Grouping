@@ -1,11 +1,14 @@
 export const PATHS = {
-  home: "/",
+  home: "/products",
   myPage: "/users/:userId/mypage", // /users/[userId]/mypage
   shoppingCart: "/users/:userId/carts", // /users/[userId]/carts
   payment: "/users/:userId/payments", // /users/[userId]/payments
   productDetail: "/products/:productId/detail", // /products/[productId]/detail
+  productNew: "/products/new",
 };
 
-export const replaceUserId = (path: string, userId: string): string => {
-  return path.replace(":userId", userId);
+export const replaceId = (path: string, id: string): string => {
+  if (path !== PATHS.productDetail) {
+    return path.replace(":userId", id);
+  } else return path.replace(":productId", id);
 };

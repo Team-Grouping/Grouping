@@ -1,0 +1,12 @@
+.productListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.productListItem {
+  flex: 0 0 48%;
+  margin: 1%;
+  box-sizing: border-box;
+}
