@@ -40,7 +40,19 @@ if (!keys) {
 
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.25",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.19", // 필요한 최소 버전
+      },
+      {
+        version: "0.8.24", // 최대 버전으로 지원 범위 추가
+      },
+      {
+        version: "0.8.25", // 현재 설정된 최신 버전 유지
+      },
+    ],
+  },
   // Optional: defaultNetwork is already being set to "localfhenix" by fhenix-hardhat-plugin
   defaultNetwork: "localfhenix",
   networks: {
