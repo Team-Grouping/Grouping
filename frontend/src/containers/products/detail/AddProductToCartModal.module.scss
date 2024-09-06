@@ -1,0 +1,77 @@
+.modalBackground {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #00000080;
+  z-index: 200;
+}
+
+.modalContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 35%;
+  left: 10%;
+  width: 80%;
+  height: 30%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 80%;
+  font-family: "Pretendard";
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.stay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47%;
+  height: 60px;
+  border-radius: 10px;
+  font-family: "Pretendard";
+  font-size: 18px;
+  font-weight: 800;
+  background-color: #ffffff;
+  color: #aaaaaa;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.toCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47%;
+  height: 60px;
+  border-radius: 10px;
+  font-family: "Pretendard";
+  font-size: 18px;
+  font-weight: 800;
+  background-color: darkcyan;
+  color: #ffffff;
+  border: 1px solid #cccccc;
+  text-decoration: none;
+}

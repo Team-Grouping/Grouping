@@ -1,5 +1,5 @@
-import s from "./page.module.scss";
+import MyPageContainer from "@/containers/mypage/MypageContainer";
 
 export default function Mypage() {
-  return <></>;
+  return <MyPageContainer />;
 }

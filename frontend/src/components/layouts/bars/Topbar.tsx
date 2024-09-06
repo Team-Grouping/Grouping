@@ -10,10 +10,11 @@ const LOGO = "/images/GroupingLogo.png";
 const BACK_BUTTON = "/images/backButton.svg";
 
 export default function TopBar() {
+  // TODO GET userId from web3auth tokenId
   const pathname = usePathname();
 
   const pathSegments = pathname.split("/").filter(Boolean);
-  const userId = pathSegments[1];
+  const userId = pathSegments[2];
 
   // 페이지 상태를 확인하는 함수
   const isPage = (page: string) =>
