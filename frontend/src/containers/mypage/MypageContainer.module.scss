@@ -1,0 +1,118 @@
+.pageContainer {
+  width: 92%;
+  padding: 10% 4%;
+}
+
+.idContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-family: "Pretendard";
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0px 10px;
+}
+
+.id {
+  font-family: "Pretendard";
+  font-size: 28px;
+  font-weight: 800;
+  color: rgb(21, 177, 177);
+}
+
+.greeting {
+  margin-top: 12px;
+  margin-bottom: 32px;
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-weight: 500;
+  color: #999999;
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.smallTitleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 28px;
+  height: 28px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 100%;
+  background-color: rgb(21, 177, 177);
+}
+
+.edit {
+  display: flex;
+  font-family: "Pretendard";
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 15px;
+  background-color: rgb(21, 177, 177);
+  margin-bottom: -6px;
+}
+
+.titleSmall {
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.titleItem {
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.addressContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+  margin: 12px 0px;
+  border-radius: 15px;
+  border: 2px solid #999999;
+}
+
+.note {
+  text-wrap: wrap;
+}
+
+.product {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.residenceContainer {
+  padding: 30px 20px;
+  margin: auto;
+  border-radius: 15px;
+  border: 2px solid #999999;
+  font-family: "Pretendard";
+  font-size: 18px;
+  font-weight: 500;
+}
