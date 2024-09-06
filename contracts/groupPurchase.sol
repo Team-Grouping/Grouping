@@ -17,18 +17,18 @@ struct Purchase {
 contract GroupPurchaseFHE {
     uint256 public purchaseCount;
     mapping(uint256 => Purchase) public purchases;
-    address public admin;
+    address public seller;
     FHERC20 internal _wfhenix;
     euint32 internal CONST_0_ENCRYPTED;
 
     event PurchaseProposed(uint256 indexed purchaseId, uint32 goalAmount, uint32 deadline);
-    event Pledge(uint256 indexed purchaseId, address indexed pledger, uint32 amount);
+    event Pledge(uint256 indexed purchaseId, uint32 amount);
+    event UnpledgeIssued(uint256 indexed purchaseId, uint32 amount);
     event PurchaseCompleted(uint256 indexed purchaseId, uint32 totalAmount);
     event PurchaseCanceled(uint256 indexed purchaseId);
-    event RefundIssued(uint256 indexed purchaseId, address indexed pledger, uint32 amount);
 
-    modifier onlyAdmin() {
-        require(msg.sender == admin, "Only admin can call this function");
+    modifier onlySeller() {
+        require(msg.sender == seller, "Only seller can call this function");
         _;
     }
 
@@ -63,7 +63,7 @@ contract GroupPurchaseFHE {
     }
 
     constructor(address wfhenix) {
-        admin = msg.sender;
+        seller = msg.sender;
         _wfhenix = FHERC20(wfhenix);
         CONST_0_ENCRYPTED = FHE.asEuint32(0);
     }
@@ -89,31 +89,14 @@ contract GroupPurchaseFHE {
         purchase.pledges[msg.sender] = purchase.pledges[msg.sender] + spent;
         purchase.totalPledged = purchase.totalPledged + spent;
 
-        emit Pledge(_purchaseId, msg.sender, FHE.decrypt(spent));
+        emit Pledge(_purchaseId, FHE.decrypt(spent));
 
         if (FHE.decrypt(purchase.totalPledged) >= FHE.decrypt(purchase.goalAmount)) {
             purchase.goalReached = true;
         }
     }
 
-    function completePurchase(uint256 _purchaseId) external onlyAdmin purchaseExists(_purchaseId) afterDeadline(_purchaseId) purchaseNotCompleted(_purchaseId) purchaseNotCanceled(_purchaseId) {
-        Purchase storage purchase = purchases[_purchaseId];
-        require(purchase.goalReached, "Goal amount not reached");
-
-        purchase.purchaseCompleted = true;
-        _wfhenix.transferEncrypted(msg.sender, purchase.totalPledged);
-
-        emit PurchaseCompleted(_purchaseId, FHE.decrypt(purchase.totalPledged));
-    }
-
-    function cancelPurchase(uint256 _purchaseId) external onlyAdmin purchaseExists(_purchaseId) beforeDeadline(_purchaseId) purchaseNotCanceled(_purchaseId) {
-        Purchase storage purchase = purchases[_purchaseId];
-        purchase.purchaseCanceled = true;
-
-        emit PurchaseCanceled(_purchaseId);
-    }
-
-    function refund(uint256 _purchaseId) external purchaseExists(_purchaseId) afterDeadline(_purchaseId) purchaseNotCompleted(_purchaseId) {
+    function unpledge(uint256 _purchaseId) external purchaseExists(_purchaseId) afterDeadline(_purchaseId) purchaseNotCompleted(_purchaseId) {
         Purchase storage purchase = purchases[_purchaseId];
         require(purchase.purchaseCanceled || !purchase.goalReached, "Refunds are only available if purchase is canceled or goal not reached");
 
@@ -123,7 +106,43 @@ contract GroupPurchaseFHE {
         purchase.pledges[msg.sender] = CONST_0_ENCRYPTED;
         _wfhenix.transferEncrypted(msg.sender, pledgedAmount);
 
-        emit RefundIssued(_purchaseId, msg.sender, FHE.decrypt(pledgedAmount));
+        emit UnpledgeIssued(_purchaseId, FHE.decrypt(pledgedAmount));
+    }
+
+    function completePurchase(uint256 _purchaseId) external onlySeller purchaseExists(_purchaseId) afterDeadline(_purchaseId) purchaseNotCompleted(_purchaseId) purchaseNotCanceled(_purchaseId) {
+        Purchase storage purchase = purchases[_purchaseId];
+        require(purchase.goalReached, "Goal amount not reached");
+
+        purchase.purchaseCompleted = true;
+        _wfhenix.transferEncrypted(msg.sender, purchase.totalPledged);
+
+        refund(_purchaseId);
+
+        emit PurchaseCompleted(_purchaseId, FHE.decrypt(purchase.totalPledged));
+    }
+
+    function cancelPurchase(uint256 _purchaseId) external onlySeller purchaseExists(_purchaseId) beforeDeadline(_purchaseId) purchaseNotCanceled(_purchaseId) {
+        Purchase storage purchase = purchases[_purchaseId];
+        purchase.purchaseCanceled = true;
+
+        refund(_purchaseId);
+
+        emit PurchaseCanceled(_purchaseId);
+    }
+
+    function refund(uint256 _purchaseId) internal {
+        Purchase storage purchase = purchases[_purchaseId];
+        
+        for (uint256 i = 0; i < purchaseCount; i++) {
+            address pledger = address(i);
+            euint32 pledgedAmount = purchase.pledges[pledger];
+            
+            if (FHE.decrypt(pledgedAmount) > 0) {
+                purchase.pledges[pledger] = CONST_0_ENCRYPTED;
+                _wfhenix.transferEncrypted(pledger, pledgedAmount);
+                emit UnpledgeIssued(_purchaseId, FHE.decrypt(pledgedAmount));
+            }
+        }
     }
 
     function getPledge(uint256 _purchaseId, address _pledger) external view purchaseExists(_purchaseId) returns (uint32) {
