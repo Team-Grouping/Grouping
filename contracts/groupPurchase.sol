@@ -2,12 +2,14 @@
 pragma solidity >=0.8.13 <0.9.0;
 
 import { inEuint32, euint32, FHE } from "@fhenixprotocol/contracts/FHE.sol";
-import { FHERC20 } from "./fherc20.sol";
+import "@fhenixprotocol/contracts/access/Permissioned.sol";
+import { FHERC20 } from "./FHERC20.sol";
 import "./ConfAddress.sol";
 
 contract GroupPurchaseFHE is Permissioned {
     uint256 public purchaseCount;
     mapping(uint256 => Purchase) public purchases;
+    mapping(uint256 => address[]) public purchaseParticipants;
     address public seller;
     FHERC20 internal _wfhenix;
     euint32 internal CONST_0_ENCRYPTED;
@@ -58,15 +60,17 @@ contract GroupPurchaseFHE is Permissioned {
 
     // 공동구매 제안
     function proposePurchase(inEuint32 calldata _goalAmount, inEuint32 calldata _duration) external onlySeller {
-        require(FHE.decrypt(_goalAmount) > 0, "Goal amount must be greater than 0");
-        require(FHE.decrypt(_duration) > 0, "Duration must be greater than 0");
+        euint32 encryptedGoalAmount = FHE.asEuint32(_goalAmount);
+        euint32 encryptedDuration = FHE.asEuint32(_duration);
+        require(FHE.decrypt(encryptedGoalAmount) > 0, "Goal amount must be greater than 0");
+        require(FHE.decrypt(encryptedDuration) > 0, "Duration must be greater than 0");
 
         purchaseCount++;
         Purchase storage newPurchase = purchases[purchaseCount];
-        newPurchase.goalAmount = _goalAmount;
-        newPurchase.deadline = FHE.asEuint32(block.timestamp) + _duration;
+        newPurchase.goalAmount = encryptedGoalAmount;
+        newPurchase.deadline = FHE.asEuint32(block.timestamp) + encryptedDuration;
 
-        emit PurchaseProposed(purchaseCount, FHE.decrypt(_goalAmount), FHE.decrypt(newPurchase.deadline));
+        emit PurchaseProposed(purchaseCount, FHE.decrypt(encryptedGoalAmount), FHE.decrypt(newPurchase.deadline));
     }
 
     // 구매 (금액과 수량 수정)
@@ -76,17 +80,24 @@ contract GroupPurchaseFHE is Permissioned {
         beforeDeadline(_purchaseId) 
         goalNotReached(_purchaseId) 
     {
-        require(FHE.decrypt(amount) > 0, "Pledge amount must be greater than 0");
-        require(FHE.decrypt(quantity) > 0, "Quantity must be greater than 0");
+        euint32 encryptedAmount = FHE.asEuint32(amount);
+        euint32 encryptedQuantity = FHE.asEuint32(quantity);
+        require(FHE.decrypt(encryptedAmount) > 0, "Pledge amount must be greater than 0");
+        require(FHE.decrypt(encryptedQuantity) > 0, "Quantity must be greater than 0");
 
         Purchase storage purchase = purchases[_purchaseId];
         euint32 spent = _wfhenix.transferFromEncrypted(msg.sender, address(this), amount);
 
+        bool isNewUser = FHE.decrypt(purchase.quantities[msg.sender].gte(CONST_0_ENCRYPTED));
+        if (isNewUser) {
+            purchaseParticipants[_purchaseId].push(msg.sender);
+        }
+
         purchase.pledges[msg.sender] = purchase.pledges[msg.sender] + spent;
-        purchase.quantities[msg.sender] = purchase.quantities[msg.sender] + quantity;
+        purchase.quantities[msg.sender] = purchase.quantities[msg.sender] + encryptedQuantity;
         purchase.totalPledged = purchase.totalPledged + spent;
 
-        emit Pledge(_purchaseId, FHE.decrypt(spent), FHE.decrypt(quantity));
+        emit Pledge(_purchaseId, FHE.decrypt(spent), FHE.decrypt(encryptedQuantity));
 
         if (FHE.decrypt(purchase.totalPledged) >= FHE.decrypt(purchase.goalAmount)) {
             purchase.goalReached = true;
@@ -126,9 +137,11 @@ contract GroupPurchaseFHE is Permissioned {
     // 환불 처리
     function refund(uint256 _purchaseId) internal {
         Purchase storage purchase = purchases[_purchaseId];
+        address[] storage participants = purchaseParticipants[_purchaseId];
 
-        for (uint256 i = 0; i < purchaseCount; i++) {
-            address pledger = address(i);
+        // 모든 참여자의 pledge를 순회하며 환불 처리
+        for (uint256 i = 0; i < participants.length; i++) {
+            address pledger = participants[i];
             euint32 pledgedAmount = purchase.pledges[pledger];
 
             if (FHE.decrypt(pledgedAmount) > 0) {
