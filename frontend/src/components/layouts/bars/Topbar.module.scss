@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 94%;
   height: 60px;
   border-bottom: 1px solid #dedede;
   position: fixed;
@@ -11,8 +11,8 @@
   left: 0;
   z-index: 100;
   background-color: white;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  padding-right: 3%;
+  padding-left: 3%;
 }
 
 .icon1 {
@@ -28,4 +28,8 @@
 
 .spacer {
   width: 48px;
+}
+
+.searchIcon {
+  margin-right: 4%;
 }

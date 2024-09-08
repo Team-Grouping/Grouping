@@ -1,0 +1,76 @@
+.searchPageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textfield {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 22px;
+  height: 40px;
+  width: calc(90% - 14px);
+  margin: 36px 16px;
+  padding-left: 8px;
+  border-radius: 10px;
+  border: 3px solid rgb(151, 197, 212);
+  &:focus {
+    border: 3px solid rgb(173, 230, 225);
+    outline: none;
+  }
+  &::placeholder {
+    font-family: "Pretendard";
+    font-weight: 600;
+    font-size: 22px;
+    color: #aaaaaa;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: calc(90% - 20px);
+  top: 46px;
+}
+
+.category {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: #cccccc;
+  height: 60px;
+  width: 100px;
+  font-family: "Pretendard";
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.selectorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.selector {
+  font-family: "Pretendard";
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  width: 60%;
+  border-radius: 10px;
+  option {
+    font-family: "Pretendard";
+    font-size: 32px;
+    font-weight: 400;
+    width: 100%;
+  }
+}

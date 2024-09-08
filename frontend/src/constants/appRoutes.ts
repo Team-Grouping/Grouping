@@ -5,6 +5,7 @@ export const PATHS = {
   payment: "/users/:userId/payments", // /users/[userId]/payments
   productDetail: "/products/:productId/detail", // /products/[productId]/detail
   productNew: "/products/new",
+  search: "/products/search",
 };
 
 export const replaceId = (path: string, id: string): string => {
