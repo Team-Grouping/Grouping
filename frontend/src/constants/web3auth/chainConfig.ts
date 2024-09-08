@@ -216,4 +216,14 @@ export const chain: {
     tickerName: "ETH",
     logo: "https://web3auth.io/images/web3authlog.png",
   },
+  fhenix: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://api.helium.fhenix.zone/",
+    displayName: "Fhenix Helium",
+    ticker: "tETH",
+    tickerName: "tETH",
+    chainId: "0x7a31c7",
+    blockExplorerUrl: "https://explorer.helium.fhenix.zone",
+    logo: "https://www.fhenix.io/wp-content/uploads/2024/03/Fhenix-logo-white.svg",
+  },
 };
