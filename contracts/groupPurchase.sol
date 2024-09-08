@@ -6,7 +6,7 @@ import "@fhenixprotocol/contracts/access/Permissioned.sol";
 import { FHERC20 } from "./FHERC20.sol";
 import "./ConfAddress.sol";
 
-contract GroupPurchaseFHE is Permissioned {
+contract GroupPurchase is Permissioned {
     uint256 public purchaseCount;
     mapping(uint256 => Purchase) public purchases;
     mapping(uint256 => address[]) public purchaseParticipants;
