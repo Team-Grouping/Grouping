@@ -22,10 +22,13 @@ type Cart = {
 
 type RequestPostCartDto = Pick<Cart, "product">;
 
+type PaymentStates = "beforeRequest" | "preparation" | "pending" | "completed";
+
 export {
   RequestPostProductDto,
   RequestPostCartDto,
   Product,
   Cart,
   RequestPostCartDto,
+  PaymentStates,
 };
