@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { PATHS } from "@/constants/appRoutes";
 import ConnectWalletButton from "@/containers/connectWallet/ConnectWalletButton";
+import { useWeb3Auth } from "@web3auth/modal-react-hooks";
 
 // 상수 정의
 const SEARCH_BUTTON = "/images/searchIcon.svg";
@@ -12,17 +13,21 @@ const BACK_BUTTON = "/images/backButton.svg";
 
 export default function TopBar() {
   // TODO GET userId from web3auth tokenId
-  const pathname = usePathname();
+  let userId = "1";
+  const { userInfo } = useWeb3Auth();
+  if (userInfo) {
+    userId = userInfo.idToken || "1";
+  }
 
+  const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
-  const userId = pathSegments[2];
 
   // 페이지 상태를 확인하는 함수
   const isPage = (page: string) =>
     pathSegments.length > 2 && pathSegments[2] === page;
 
   const isHome = pathname === PATHS.home;
-  const isDetailPage = isPage("detail") && !isNaN(Number(userId));
+  const isDetailPage = isPage("detail");
   const isShoppingCart = isPage("carts");
   const isMyPage = isPage("mypage");
   const isPayment = isPage("payments");
