@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "@/containers/product/new/ProductForm.module.scss";
+import styles from "@/containers/products/new/ProductForm.module.scss";
 import { RequestPostProductDto } from "@/type/types";
 
 interface ProductFormProps {
