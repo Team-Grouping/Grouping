@@ -1,5 +1,5 @@
 # Grouping
-
+**Grouping** is a decentralized Web 3.0 social commerce platform that enables safe and transparent group purchases.
 ## Quick start
 
 The first things you need to do are cloning this repository and installing its dependencies:
@@ -12,7 +12,7 @@ cd frontend
 pnpm install
 ```
 
-Next, you need an .env file containing Firebase privateKeys, Client IDs
+Next, you need an .env file in frontend folder, containing Firebase privateKeys and Client IDs
 
 ```sh
 // .env
