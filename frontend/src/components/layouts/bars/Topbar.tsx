@@ -2,7 +2,8 @@ import Image from "next/image";
 import s from "./TopBar.module.scss";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { PATHS } from "@/constants/appRoutes"; // PATHS 임포트
+import { PATHS } from "@/constants/appRoutes";
+import ConnectWalletButton from "@/containers/connectWallet/ConnectWalletButton";
 
 // 상수 정의
 const SEARCH_BUTTON = "/images/searchIcon.svg";
@@ -38,6 +39,7 @@ export default function TopBar() {
 
   return (
     <div className={s.topBar}>
+      {isHome && <ConnectWalletButton />}
       {backLink && (
         <Link href={backLink}>
           <Image

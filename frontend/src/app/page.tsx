@@ -1,95 +1,48 @@
+"use client";
+import { MouseEvent, useEffect } from "react";
+import styles from "./page.module.scss";
+import { useWeb3Auth } from "@web3auth/modal-react-hooks";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import styles from "./page.module.css";
 
 export default function Home() {
+  const { isConnected, connect, web3Auth } = useWeb3Auth();
+  const router = useRouter();
+
+  const handleLogin = async (event: MouseEvent<HTMLButtonElement>) => {
+    if (web3Auth) {
+      if (isConnected) {
+        router.push("/products");
+      } else {
+        await connect();
+        if (isConnected) {
+          router.push("/products");
+        }
+      }
+    }
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
       <div className={styles.center}>
+        <h1 className={styles.title}>Grouping</h1>
+        <div className={styles.description}>
+          <h2>A decentralized Web 3.0 social commerce platform</h2>
+        </div>
         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src="/images/GroupingLogo.png"
+          alt="Grouping"
+          width={200}
+          height={200}
         />
+        <div className={styles.description}>
+          <p>enables safe and transparent group purchasing</p>
+        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <button className={styles.button} onClick={handleLogin}>
+        Try Grouping!
+      </button>
     </main>
   );
 }

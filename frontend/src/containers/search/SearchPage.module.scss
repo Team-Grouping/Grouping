@@ -14,7 +14,7 @@
   font-weight: 600;
   font-size: 22px;
   height: 40px;
-  width: calc(90% - 14px);
+  width: calc(100% - 32px);
   margin: 36px 16px;
   padding-left: 8px;
   border-radius: 10px;
@@ -33,8 +33,8 @@
 
 .searchIcon {
   position: absolute;
-  left: calc(90% - 20px);
-  top: 46px;
+  left: calc(100% - 56px);
+  top: 43px;
 }
 
 .category {

@@ -6,6 +6,8 @@ import { PATHS, replaceId } from "@/constants/appRoutes";
 import MoveToCartButton from "@/containers/products/detail/MoveToCartButton";
 import { useProductItems } from "@/data/store/useProductStore";
 import { Product } from "@/type/types";
+import { useWeb3Auth } from "@web3auth/modal-react-hooks";
+import { useWeb3AuthContext } from "@/providers/Web3AuthClient";
 
 // 상수 정의
 const ICONS = {
@@ -23,9 +25,14 @@ interface bottomBarProps {
 
 export default function BottomBar({ setCartModalState }: bottomBarProps) {
   const pathname = usePathname();
+  const { isConnected, userInfo } = useWeb3Auth();
+  let userId = "1";
+
+  if (userInfo) {
+    userId = userInfo.idToken || "1";
+  }
 
   // TODO GET userID from web3auth tokenId
-  const userId = "1";
 
   const pathMyPageUserId = replaceId(PATHS.myPage, userId);
   const pathCartUserId = replaceId(PATHS.shoppingCart, userId);
@@ -49,6 +56,9 @@ export default function BottomBar({ setCartModalState }: bottomBarProps) {
         />
       ) : (
         <>
+          {isConnected && userInfo?.typeOfLogin == "google" && (
+            <div className={s.walletDiv}></div>
+          )}
           <Link href={pathMyPageUserId}>
             <Image
               src={

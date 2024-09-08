@@ -1,0 +1,24 @@
+.button {
+  display: flex;
+  flex-direction: row;
+  border-radius: 9999px; // This makes it rounded-full
+  padding: 0.75rem 1.5rem; // px-6 py-3 equivalent in Tailwind (24px and 12px)
+  color: white;
+  justify-content: center;
+  align-items: center; // align-center in SCSS (for vertical alignment)
+  cursor: pointer;
+  background-color: darkcyan;
+  font-size: large;
+  font-weight: 600;
+  border: none;
+  margin-right: 0.75rem;
+  &:hover {
+    // Optional: Add a hover effect if needed
+    background-color: lighten(darkcyan, 10%);
+  }
+
+  &:active {
+    // Optional: Add an active effect if needed
+    background-color: darken(darkcyan, 10%);
+  }
+}

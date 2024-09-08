@@ -1,5 +1,5 @@
 .pageContainer {
-  width: 92%;
+  width: 100%;
   padding: 10% 4%;
 }
 
@@ -69,6 +69,7 @@
   border-radius: 15px;
   background-color: rgb(21, 177, 177);
   margin-bottom: -6px;
+  cursor: pointer;
 }
 
 .titleSmall {
@@ -115,4 +116,5 @@
   font-family: "Pretendard";
   font-size: 18px;
   font-weight: 500;
+  width: 100%;
 }
