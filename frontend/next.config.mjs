@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 import path from "path";
 
-const nextConfig = {
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.resolve("src");
-    return config;
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
