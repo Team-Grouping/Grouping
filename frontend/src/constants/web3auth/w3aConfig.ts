@@ -45,11 +45,6 @@ export const openloginAdapter = new OpenloginAdapter({
 export const walletServicesPlugin = new WalletServicesPlugin({
   walletInitOptions: {
     confirmationStrategy: "modal",
-    whiteLabel: {
-      showWidgetButton: true,
-      logoDark: "../../../public/images/GroupingLogo.png",
-      logoLight: "../../../public/images/GroupingLogo.png",
-    },
   },
 });
 
