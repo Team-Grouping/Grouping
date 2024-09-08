@@ -1,9 +1,8 @@
 "use client";
 
-import s from "./MypageContainer.module.scss";
+import s from "@/containers/mypage/MypageContainer.module.scss";
 import { user1 } from "@/data/user";
 import { products } from "@/data/products";
-import Cart from "@/containers/carts/Cart";
 import ProductBox from "@/containers/mypage/MyProductBox";
 import Link from "next/link";
 import { PlusIcon, CopyIcon } from "lucide-react";

@@ -1,7 +1,7 @@
 "use cleint";
 
-import s from "./ProductList.module.scss";
-import ProductItem from "./ProductItem";
+import s from "@/containers/products/ProductList.module.scss";
+import ProductItem from "@/containers/products/ProductItem";
 import {
   useProductItems,
   useProductActions,

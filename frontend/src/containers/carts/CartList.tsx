@@ -1,5 +1,5 @@
 import Cart from "@/containers/carts/Cart";
-import s from "./CartList.module.scss";
+import s from "@/containers/carts/CartList.module.scss";
 import { useCartItems, useCartActions } from "@/data/store/useCartStore";
 import Link from "next/link";
 import { useState } from "react";

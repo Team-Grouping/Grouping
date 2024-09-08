@@ -4,7 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useProductItems } from "@/data/store/useProductStore";
 import { ArrowBigDown } from "lucide-react";
-import styles from "./ProductDetailContainer.module.scss";
+import styles from "@/containers/products/detail/ProductDetailContainer.module.scss";
 
 export default function ProductDetailContainer() {
   const pathname = usePathname();

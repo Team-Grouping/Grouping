@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import s from "./BottomBar.module.scss";
+import s from "@/components/layouts/bars/BottomBar.module.scss";
 import { PATHS, replaceId } from "@/constants/appRoutes";
 import MoveToCartButton from "@/containers/products/detail/MoveToCartButton";
 import { useProductItems } from "@/data/store/useProductStore";

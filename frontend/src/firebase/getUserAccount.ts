@@ -1,5 +1,5 @@
 import { child, get, getDatabase, ref, set, update } from "firebase/database";
-import { database } from "./firebaseDB";
+import { database } from "@/firebase/firebaseDB";
 
 export interface userAccount {
   IDToken: string;

@@ -1,6 +1,6 @@
 import { type Cart } from "@/type/types";
 import Image from "next/image";
-import s from "./PaymentItemBox.module.scss";
+import s from "@/containers/payments/PaymentItemBox.module.scss";
 
 interface ItemBoxProps {
   item: Cart;

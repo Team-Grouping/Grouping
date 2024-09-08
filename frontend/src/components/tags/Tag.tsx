@@ -1,4 +1,4 @@
-import s from "./Tag.module.scss";
+import s from "@/components/tags/Tag.module.scss";
 
 interface TagProps {
   content: string;

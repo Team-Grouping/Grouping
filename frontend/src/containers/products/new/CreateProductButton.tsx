@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import styles from "./CreateProductButton.module.scss";
+import styles from "@/containers/products/new/CreateProductButton.module.scss";
 import { PlusIcon } from "lucide-react";
 import { PATHS } from "@/constants/appRoutes";
 

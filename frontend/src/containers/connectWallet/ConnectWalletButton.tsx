@@ -1,6 +1,6 @@
 "use client";
 import { useWeb3Auth } from "@web3auth/modal-react-hooks";
-import s from "./ConnectWalletButton.module.scss";
+import s from "@/containers/connectWallet/ConnectWalletButton.module.scss";
 import { MouseEvent } from "react";
 
 const ConnectWalletButton = () => {

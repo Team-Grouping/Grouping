@@ -1,6 +1,6 @@
 "use client";
 
-import s from "./DefaultLayout.module.scss";
+import s from "@/components/layouts/DefaultLayout.module.scss";
 import { ReactNode, useState } from "react";
 import { usePathname } from "next/navigation";
 import TopBar from "@/components/layouts/bars/Topbar";
