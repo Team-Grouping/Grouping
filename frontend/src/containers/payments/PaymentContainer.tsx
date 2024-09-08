@@ -17,7 +17,7 @@ export default function PaymentContainer() {
 
   const [paymentState, setPaymentState] =
     useState<PaymentStates>("beforeRequest");
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = useState(true);
 
   const startPayment = () => {
     setPaymentState("preparation");
@@ -62,10 +62,7 @@ export default function PaymentContainer() {
             style={{ width: "24px", height: "24px" }}
             className={s.input}
           />
-          <div className={s.noticeContainer}>
-            <div className={s.agreement}>I agree with</div>
-            <div className={s.agreement}>this transaction</div>
-          </div>
+          <div className={s.noticeContainer}></div>
         </div>
         <div className={`${s.checkoutButton} ${agree ? s.agree : ""}`}>
           CheckOut!

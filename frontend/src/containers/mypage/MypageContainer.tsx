@@ -134,7 +134,7 @@ export default function MyPageContainer() {
           ref={inputRef}
         />
       ) : (
-        <div className={s.residenceContainer}>{user!!.Residence}</div>
+        <div className={s.residenceContainer}>{user?.Residence}</div>
       )}
 
       <div className={s.titleSmall}>Participating GroupBuys</div>
