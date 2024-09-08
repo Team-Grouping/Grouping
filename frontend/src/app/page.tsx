@@ -4,10 +4,17 @@ import styles from "./page.module.scss";
 import { useWeb3Auth } from "@web3auth/modal-react-hooks";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { isObject } from "util";
 
 export default function Home() {
   const { isConnected, connect, web3Auth } = useWeb3Auth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (isConnected) {
+      router.push("/products");
+    }
+  }, [isConnected]);
 
   const handleLogin = async (event: MouseEvent<HTMLButtonElement>) => {
     if (web3Auth) {
@@ -15,9 +22,6 @@ export default function Home() {
         router.push("/products");
       } else {
         await connect();
-        if (isConnected) {
-          router.push("/products");
-        }
       }
     }
   };
