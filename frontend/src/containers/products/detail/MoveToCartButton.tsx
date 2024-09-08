@@ -1,4 +1,4 @@
-import s from "./MoveToCartButton.module.scss";
+import s from "@/containers/products/detail/MoveToCartButton.module.scss";
 import { useCartActions } from "@/data/store/useCartStore";
 import { Product, RequestPostCartDto } from "@/type/types";
 

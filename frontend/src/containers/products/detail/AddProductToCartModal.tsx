@@ -1,5 +1,5 @@
 import Link from "next/link";
-import s from "./AddProductToCartModal.module.scss";
+import s from "@/containers/products/detail/AddProductToCartModal.module.scss";
 import { PATHS, replaceId } from "@/constants/appRoutes";
 
 interface cartModalProps {

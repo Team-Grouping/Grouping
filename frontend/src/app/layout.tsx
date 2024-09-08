@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import localFont from "next/font/local";
 import DefaultLayout from "@/components/layouts/DefaultLayouts";
 import Web3Auth from "@/providers/Web3Auth";

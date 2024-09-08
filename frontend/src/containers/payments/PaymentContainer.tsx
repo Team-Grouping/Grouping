@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import s from "./PaymentContainer.module.scss";
-import ProgressIndicator from "./PaymentProgressIndicator";
-import Cart from "@/containers/carts/Cart";
+import s from "@/containers/payments/PaymentContainer.module.scss";
+import ProgressIndicator from "@/containers/payments/PaymentProgressIndicator";
 import { type Cart as CartType, PaymentStates } from "@/type/types";
 import { useCartActions, useCartItems } from "@/data/store/useCartStore";
-import PaymentItemBox from "./PaymentItemBox";
+import PaymentItemBox from "@/containers/payments/PaymentItemBox";
 
 export default function PaymentContainer() {
   const { calculateTotalPrice } = useCartActions();
@@ -62,7 +61,10 @@ export default function PaymentContainer() {
             style={{ width: "24px", height: "24px" }}
             className={s.input}
           />
-          <div className={s.noticeContainer}></div>
+          <div className={s.noticeContainer}>
+            <div className={s.agreement}>I agree with</div>
+            <div className={s.agreement}>this transaction</div>
+          </div>
         </div>
         <div className={`${s.checkoutButton} ${agree ? s.agree : ""}`}>
           CheckOut!

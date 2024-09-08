@@ -1,5 +1,5 @@
 import Image from "next/image";
-import s from "./PaymentProgressIndicator.module.scss";
+import s from "@/containers/payments/PaymentProgressIndicator.module.scss";
 import { PaymentStates } from "@/type/types";
 
 interface progressIndicatorProps {

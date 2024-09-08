@@ -1,4 +1,4 @@
-import s from "./MyProductBox.module.scss";
+import s from "@/containers/mypage/MyProductBox.module.scss";
 import Image from "next/image";
 // import { MinusIcon, PlusIcon, X } from "lucide-react";
 // import { useCartStore } from "@/store/useCartStore";

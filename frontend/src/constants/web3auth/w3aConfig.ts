@@ -1,5 +1,5 @@
 import { UX_MODE } from "@toruslabs/openlogin-utils";
-import { chain } from "./chainConfig";
+import { chain } from "@/constants/web3auth/chainConfig";
 import { WEB3AUTH_NETWORK } from "@web3auth/base";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { Web3AuthOptions } from "@web3auth/modal";

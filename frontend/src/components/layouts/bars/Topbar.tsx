@@ -1,5 +1,5 @@
 import Image from "next/image";
-import s from "./TopBar.module.scss";
+import s from "@/components/layouts/bars/Topbar.module.scss";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { PATHS } from "@/constants/appRoutes";

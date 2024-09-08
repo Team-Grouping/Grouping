@@ -1,4 +1,4 @@
-import s from "./ProductItem.module.scss";
+import s from "@/containers/products/ProductItem.module.scss";
 import Tag from "@/components/tags/Tag";
 import Link from "next/link";
 import Image from "next/image";

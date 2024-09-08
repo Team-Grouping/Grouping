@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import s from "./SearchPage.module.scss";
+import s from "@/containers/search/SearchPage.module.scss";
 import { categoryType } from "@/type/types";
 
 export default function SearchPageContainer() {

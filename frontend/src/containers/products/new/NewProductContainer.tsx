@@ -3,7 +3,7 @@
 import ProductForm from "@/containers/products/new/ProductForm";
 import { useProductActions } from "@/data/store/useProductStore";
 import { useRouter } from "next/navigation";
-import s from "./NewProductContainer.module.scss";
+import s from "@/containers/products/new/NewProductContainer.module.scss";
 import { RequestPostProductDto } from "@/type/types";
 
 export default function NewProductContainer() {

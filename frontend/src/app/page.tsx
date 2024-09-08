@@ -1,10 +1,9 @@
 "use client";
 import { MouseEvent, useEffect } from "react";
-import styles from "./page.module.scss";
+import styles from "@/app/page.module.scss";
 import { useWeb3Auth } from "@web3auth/modal-react-hooks";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { isObject } from "util";
 
 export default function Home() {
   const { isConnected, connect, web3Auth } = useWeb3Auth();
