@@ -42,6 +42,11 @@ export default function BottomBar({ setCartModalState }: bottomBarProps) {
   const productId = parseInt(pathname.split("/")[2]);
   const products = useProductItems();
   const product = products.find((p: Product) => p.id === productId);
+  const selectedHomeIcon =
+    pathname === PATHS.home ||
+    pathname === PATHS.productNew ||
+    pathname === PATHS.search;
+
   return (
     <div className={s.bottomBar}>
       {isDetailPage && product ? (
@@ -70,7 +75,7 @@ export default function BottomBar({ setCartModalState }: bottomBarProps) {
 
           <Link href={PATHS.home}>
             <Image
-              src={pathname === PATHS.home ? ICONS.selectedHome : ICONS.home}
+              src={selectedHomeIcon ? ICONS.selectedHome : ICONS.home}
               alt="홈"
               width={40}
               height={40}

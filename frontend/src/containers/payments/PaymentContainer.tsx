@@ -6,12 +6,14 @@ import ProgressIndicator from "./PaymentProgressIndicator";
 import Cart from "@/containers/carts/Cart";
 import { type Cart as CartType, PaymentStates } from "@/type/types";
 import { useCartActions, useCartItems } from "@/data/store/useCartStore";
+import PaymentItemBox from "./PaymentItemBox";
 
 export default function PaymentContainer() {
   const { calculateTotalPrice } = useCartActions();
 
   const totalPrice = calculateTotalPrice();
-  const itemsToCheckout = useCartItems();
+  const cartItems = useCartItems();
+  const itemsToCheckout = cartItems.filter((item) => item.checked);
 
   const [paymentState, setPaymentState] =
     useState<PaymentStates>("beforeRequest");
@@ -44,7 +46,7 @@ export default function PaymentContainer() {
 
         {itemsToCheckout.map((item: CartType, index: number) => (
           <div key={index}>
-            <Cart item={item} />
+            <PaymentItemBox item={item} />
             {/*<div className={s.receiptItem}>
               {`Quantity of ${item.title} : ${item.quantity}`}
             </div> */}

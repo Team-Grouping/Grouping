@@ -24,6 +24,14 @@ type RequestPostCartDto = Pick<Cart, "product">;
 
 type PaymentStates = "beforeRequest" | "preparation" | "pending" | "completed";
 
+type categoryType =
+  | undefined
+  | "fruit"
+  | "vegetable"
+  | "dairy"
+  | "meat"
+  | "beverage";
+
 export {
   RequestPostProductDto,
   RequestPostCartDto,
@@ -31,4 +39,5 @@ export {
   Cart,
   RequestPostCartDto,
   PaymentStates,
+  categoryType,
 };

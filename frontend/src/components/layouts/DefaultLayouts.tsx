@@ -15,7 +15,8 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
   const handleCartModal = () => {
     setCartModalState(!cartModalState);
   };
-  const isPayment = pathname.split("/")[2] === PATHS.payment;
+  const hideBottomBar =
+    pathname.split("/")[2] === PATHS.payment || pathname === "/";
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
       )}
       <TopBar />
       <main className={s.content}>{children}</main>
-      {!isPayment && <BottomBar setCartModalState={handleCartModal} />}
+      {!hideBottomBar && <BottomBar setCartModalState={handleCartModal} />}
     </>
   );
 }

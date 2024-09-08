@@ -31,10 +31,12 @@ export default function TopBar() {
   const isShoppingCart = isPage("carts");
   const isMyPage = isPage("mypage");
   const isPayment = isPage("payments");
+  const isNewPage = pathname === PATHS.productNew;
+  const isSearch = pathname === PATHS.search;
 
   // 백 링크 결정
   const backLink =
-    isDetailPage || isShoppingCart || isMyPage
+    isDetailPage || isShoppingCart || isMyPage || isNewPage || isSearch
       ? PATHS.home
       : isPayment
       ? PATHS.shoppingCart.replace(":userId", userId)
@@ -64,17 +66,22 @@ export default function TopBar() {
           priority={true}
         />
       </Link>
-      {(isDetailPage || isShoppingCart || isPayment || isMyPage) && (
-        <div className={s.spacer} />
-      )}
+      {(isDetailPage ||
+        isShoppingCart ||
+        isPayment ||
+        isMyPage ||
+        isNewPage ||
+        isSearch) && <div className={s.spacer} />}
       {isHome && (
-        <Image
-          src={SEARCH_BUTTON}
-          alt="Search"
-          width={36}
-          height={36}
-          className={s.icon1}
-        />
+        <Link href={PATHS.search}>
+          <Image
+            src={SEARCH_BUTTON}
+            alt="Search"
+            width={36}
+            height={36}
+            className={s.searchIcon}
+          />
+        </Link>
       )}
     </div>
   );
