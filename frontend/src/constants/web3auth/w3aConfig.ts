@@ -22,7 +22,7 @@ const network =
 
 const privateKeyProvider = new EthereumPrivateKeyProvider({
   config: {
-    chainConfig: chain.ethereum,
+    chainConfig: chain.fhenix,
   },
 });
 
