@@ -76,7 +76,7 @@ export default function MyPageContainer() {
       }
     };
     fetchIdToken();
-  }, [getUserInfo]);
+  }, [getAddress, getUserInfo]);
 
   const participatingProducts = products.filter((item) =>
     user1.participatingProductsId.includes(item.id),
