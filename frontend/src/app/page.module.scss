@@ -1,84 +1,35 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 .description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
-}
-
-.description a {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  font-size: 1.05rem;
+  max-width: var(--max-width);
+  width: 70%;
+  font-family: var(--font-mono);
+  margin: 1rem;
+  text-align: center;
 }
 
 .description p {
-  position: relative;
-  margin: 0;
   padding: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
 }
 
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
-}
-
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
-}
-
-.card span {
-  display: inline-block;
-  transition: transform 200ms;
-}
-
-.card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
-}
-
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-  text-wrap: balance;
-}
-
 .center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .center::before {
@@ -101,7 +52,7 @@
   content: "";
   left: 50%;
   position: absolute;
-  filter: blur(45px);
+  filter: blur(25px);
   transform: translateZ(0);
 }
 
@@ -139,18 +90,6 @@
     text-align: center;
   }
 
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
   .center::before {
     transform: none;
     height: 300px;
@@ -160,16 +99,13 @@
     font-size: 0.8rem;
   }
 
-  .description a {
-    padding: 1rem;
-  }
-
   .description p,
   .description div {
     display: flex;
     justify-content: center;
-    position: fixed;
     width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
   .description p {
@@ -200,6 +136,30 @@
       rgb(var(--background-end-rgb)) 40%
     );
     z-index: 1;
+  }
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  border-radius: 9999px; // This makes it rounded-full
+  padding: 0.75rem 1.5rem; // px-6 py-3 equivalent in Tailwind (24px and 12px)
+  color: white;
+  justify-content: center;
+  align-items: center; // align-center in SCSS (for vertical alignment)
+  cursor: pointer;
+  background-color: darkcyan;
+  font-size: large;
+  font-weight: 600;
+  border: none;
+  &:hover {
+    // Optional: Add a hover effect if needed
+    background-color: lighten(darkcyan, 10%);
+  }
+
+  &:active {
+    // Optional: Add an active effect if needed
+    background-color: darken(darkcyan, 10%);
   }
 }
 
