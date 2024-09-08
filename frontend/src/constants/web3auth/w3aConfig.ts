@@ -11,17 +11,18 @@ const clientId =
     ? process.env.NEXT_PUBLIC_CLIENT_ID_PRODUCTION
     : process.env.NEXT_PUBLIC_CLIENT_ID_DEVELOPMENT;
 
-const network =
-  process.env.NODE_ENV === "production"
-    ? WEB3AUTH_NETWORK.SAPPHIRE_MAINNET
-    : WEB3AUTH_NETWORK.SAPPHIRE_DEVNET;
 if (typeof clientId !== "string") {
   throw new Error("Client ID must be a string");
 }
 
+const network =
+  process.env.NODE_ENV === "production"
+    ? WEB3AUTH_NETWORK.SAPPHIRE_MAINNET
+    : WEB3AUTH_NETWORK.SAPPHIRE_DEVNET;
+
 const privateKeyProvider = new EthereumPrivateKeyProvider({
   config: {
-    chainConfig: chain.sepolia,
+    chainConfig: chain.ethereum,
   },
 });
 
@@ -41,7 +42,16 @@ export const openloginAdapter = new OpenloginAdapter({
   privateKeyProvider,
 });
 
-export const walletServicesPlugin = new WalletServicesPlugin();
+export const walletServicesPlugin = new WalletServicesPlugin({
+  walletInitOptions: {
+    confirmationStrategy: "modal",
+    whiteLabel: {
+      showWidgetButton: true,
+      logoDark: "../../../public/images/GroupingLogo.png",
+      logoLight: "../../../public/images/GroupingLogo.png",
+    },
+  },
+});
 
 export const web3AuthContextConfig = {
   web3AuthOptions,
